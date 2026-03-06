@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Musterbetrieb Handwerk | Zuverlässig. Lokal. Schnell.</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #1f4f7a;
+      --accent-2: #d89b3d;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+      --max: 1140px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(246, 247, 249, 0.88);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), #2b6da8);
+      color: white;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .btn, button {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      font: inherit;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      padding: 14px 20px;
+      box-shadow: var(--shadow);
+      font-weight: 700;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--text);
+      padding: 14px 20px;
+      border: 1px solid var(--line);
+      font-weight: 700;
+    }
+
+    .hero {
+      padding: 72px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(31, 79, 122, 0.08);
+      color: var(--accent);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin: 0 0 12px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 4.4rem);
+      max-width: 11ch;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 28px 0 26px;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .point {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+      font-size: 0.95rem;
+    }
+
+    .hero-card,
+    .card,
+    .faq-item,
+    .contact-card,
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 22px;
+    }
+
+    .hero-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .rating {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .mock-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .mini-box {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      min-height: 100px;
+    }
+
+    .mini-box strong { display: block; margin-bottom: 6px; }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .section-head p {
+      max-width: 58ch;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .grid-3,
+    .grid-4,
+    .steps,
+    .info-grid,
+    .contact-grid,
+    .faq-grid,
+    .hours-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .hours-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 0.95fr 1.05fr; align-items: start; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .info-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .card {
+      padding: 22px;
+    }
+
+    .card h3 { font-size: 1.15rem; }
+    .card p, .card li, .contact-card p, .form-card p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: var(--accent);
+      background: rgba(31, 79, 122, 0.1);
+    }
+
+    .step-number {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 14px 0 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .list li::before {
+      content: "•";
+      color: var(--accent-2);
+      margin-right: 10px;
+    }
+
+    .hours-table {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hours-row:last-child { border-bottom: none; }
+
+    .contact-card, .form-card {
+      padding: 24px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .contact-list a:hover { color: var(--accent); }
+
+    .map-placeholder {
+      min-height: 240px;
+      border-radius: 16px;
+      border: 1px dashed #cbd5e1;
+      background: linear-gradient(180deg, #f8fafc, #eef2f7);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--muted);
+      padding: 20px;
+      margin-top: 18px;
+    }
+
+    .embed-box {
+      min-height: 360px;
+      border-radius: 16px;
+      border: 1px dashed #cbd5e1;
+      background: #f8fafc;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 26px;
+      color: var(--muted);
+      margin: 18px 0;
+    }
+
+    .form-hint {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .faq-item {
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: white;
+      padding: 18px 20px;
+      text-align: left;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .faq-question span:last-child {
+      color: var(--accent);
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .faq-answer {
+      padding: 0 20px 18px;
+      color: var(--muted);
+      display: none;
+    }
+
+    .faq-item.active .faq-answer { display: block; }
+
+    .cta-banner {
+      padding: 24px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--accent), #295f90);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-banner p { margin: 8px 0 0; color: rgba(255,255,255,0.84); }
+
+    footer {
+      padding: 34px 0 48px;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      padding-top: 22px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: white;
+      border: 1px solid var(--line);
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .contact-grid,
+      .hours-grid,
+      .grid-3,
+      .grid-4,
+      .steps,
+      .info-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-points {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .mobile-toggle { display: inline-grid; place-items: center; }
+
+      .nav {
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 8px 0 4px;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .hero-grid,
+      .contact-grid,
+      .hours-grid,
+      .grid-3,
+      .grid-4,
+      .steps,
+      .info-grid,
+      .mock-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head,
+      .cta-banner,
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding-top: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#start" class="brand">
+        <span class="brand-badge">HB</span>
+        <span>Musterbetrieb Handwerk</span>
+      </a>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menü öffnen">☰</button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#ueber-uns">Über uns</a>
+        <a href="#ablauf">Ablauf</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#termin" class="btn btn-primary">Termin anfragen</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="start">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Lokal für Sie im Einsatz</div>
+          <h1>Zuverlässiges Handwerk aus einer Hand.</h1>
+          <p class="lead">
+            Wir unterstützen private und gewerbliche Kundinnen und Kunden mit sauberen, termintreuen und transparenten Handwerksleistungen.
+            Schnell erreichbar, klar in der Abstimmung und mit einem einfachen Weg zur Terminvereinbarung.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#termin" class="btn btn-primary">Termin anfragen</a>
+            <a href="#kontakt" class="btn btn-secondary">Kontakt ansehen</a>
+          </div>
+
+          <div class="hero-points">
+            <div class="point"><strong>Schnelle Rückmeldung</strong><br>Wir melden uns zeitnah auf Ihre Anfrage.</div>
+            <div class="point"><strong>Saubere Planung</strong><br>Klare Absprachen statt unnötiger Umwege.</div>
+            <div class="point"><strong>Regional vor Ort</strong><br>Kurze Wege und persönlicher Kontakt.</div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-card-top">
+            <div>
+              <h3 style="margin-bottom:6px;">Ihr regionaler Ansprechpartner</h3>
+              <p class="rating">Mo–Fr erreichbar · Musterstadt & Umgebung</p>
+            </div>
+            <div class="eyebrow" style="margin:0;">4,9/5 Service</div>
+          </div>
+
+          <div class="mock-grid">
+            <div class="mini-box">
+              <strong>Leistungen</strong>
+              Beratung, Ausführung, Reparatur und Wartung aus einer Hand.
+            </div>
+            <div class="mini-box">
+              <strong>Termine</strong>
+              Anfrage direkt über eingebettetes Formular auf der Website.
+            </div>
+            <div class="mini-box">
+              <strong>Einsatzgebiet</strong>
+              Musterstadt, Umland und ausgewählte Nachbarorte.
+            </div>
+            <div class="mini-box">
+              <strong>Kontakt</strong>
+              Telefon, E-Mail und kurze Anfragewege ohne Umwege.
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="leistungen">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Unsere Leistungen</h2>
+            <p>Die Inhalte kannst du später je nach Gewerke anpassen, zum Beispiel für Maler, Sanitär, Elektrik oder allgemeine Handwerksleistungen.</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="icon">01</div>
+            <h3>Montage & Installation</h3>
+            <p>Saubere Umsetzung von Neuinstallationen, Austausch und fachgerechter Montage bei Neu- und Bestandsobjekten.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">02</div>
+            <h3>Reparatur & Instandsetzung</h3>
+            <p>Schnelle Unterstützung bei Defekten, kleineren Schäden und notwendigen Nachbesserungen.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">03</div>
+            <h3>Wartung & Service</h3>
+            <p>Regelmäßige Prüfungen und planbare Serviceleistungen zur langfristigen Sicherung der Funktion.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">04</div>
+            <h3>Beratung vor Ort</h3>
+            <p>Persönliche Einschätzung, transparente Abstimmung und eine nachvollziehbare Empfehlung für die beste Lösung.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">05</div>
+            <h3>Sanierung & Erneuerung</h3>
+            <p>Unterstützung bei Modernisierungen, Austausch bestehender Elemente und Anpassungen im Bestand.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">06</div>
+            <h3>Privat & Gewerblich</h3>
+            <p>Leistungen für private Haushalte, Vermieterinnen und Vermieter sowie kleine und mittlere Unternehmen.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="ueber-uns">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Warum Kundinnen und Kunden uns wählen</h2>
+            <p>Dieser Bereich ist wichtig, weil er Vertrauen aufbaut. Gerade kleine Handwerksbetriebe ohne bestehende Website profitieren davon besonders.</p>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <article class="card">
+            <h3>Verlässlich in der Kommunikation</h3>
+            <p>Wir legen Wert auf klare Rückmeldungen, realistische Zeitfenster und nachvollziehbare Absprachen.</p>
+            <ul class="list">
+              <li>Kurze Reaktionszeiten</li>
+              <li>Persönliche Ansprechpartner</li>
+              <li>Transparente Abstimmung</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Saubere und pragmatische Umsetzung</h3>
+            <p>Von der ersten Anfrage bis zur Ausführung arbeiten wir strukturiert, lösungsorientiert und mit Blick auf praktikable Ergebnisse.</p>
+            <ul class="list">
+              <li>Ordentliche Ausführung</li>
+              <li>Klare Leistungsbilder</li>
+              <li>Passend für Privat und Gewerbe</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="ablauf">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>So läuft es ab</h2>
+            <p>Ein kurzer Prozess hilft Nutzerinnen und Nutzern sofort zu verstehen, wie die Anfrage funktioniert.</p>
+          </div>
+        </div>
+
+        <div class="steps">
+          <article class="card">
+            <div class="step-number">1</div>
+            <h3>Anfrage senden</h3>
+            <p>Sie senden uns Ihre Anfrage direkt über die Website oder telefonisch.</p>
+          </article>
+
+          <article class="card">
+            <div class="step-number">2</div>
+            <h3>Rückmeldung erhalten</h3>
+            <p>Wir prüfen Ihr Anliegen und melden uns für Rückfragen oder einen Vorschlag.</p>
+          </article>
+
+          <article class="card">
+            <div class="step-number">3</div>
+            <h3>Termin abstimmen</h3>
+            <p>Gemeinsam stimmen wir einen passenden Termin oder Vor-Ort-Termin ab.</p>
+          </article>
+
+          <article class="card">
+            <div class="step-number">4</div>
+            <h3>Leistung umsetzen</h3>
+            <p>Die Umsetzung erfolgt zuverlässig, sauber und mit transparentem Ablauf.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="zeiten">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Öffnungszeiten</h2>
+            <p>Auch diese Daten tauschst du später pro Betrieb einfach aus.</p>
+          </div>
+        </div>
+
+        <div class="hours-grid">
+          <div class="card">
+            <div class="hours-table">
+              <div class="hours-row"><strong>Montag</strong><span>08:00 – 17:00 Uhr</span></div>
+              <div class="hours-row"><strong>Dienstag</strong><span>08:00 – 17:00 Uhr</span></div>
+              <div class="hours-row"><strong>Mittwoch</strong><span>08:00 – 17:00 Uhr</span></div>
+              <div class="hours-row"><strong>Donnerstag</strong><span>08:00 – 17:00 Uhr</span></div>
+              <div class="hours-row"><strong>Freitag</strong><span>08:00 – 15:00 Uhr</span></div>
+              <div class="hours-row"><strong>Samstag</strong><span>nach Vereinbarung</span></div>
+              <div class="hours-row"><strong>Sonntag</strong><span>geschlossen</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Hinweis zur Erreichbarkeit</h3>
+            <p>Außerhalb der Öffnungszeiten können Anfragen bequem über das Terminformular gesendet werden. Rückmeldungen erfolgen schnellstmöglich am nächsten Werktag.</p>
+            <ul class="list">
+              <li>Telefonisch während der Geschäftszeiten</li>
+              <li>Schriftlich jederzeit per Formular</li>
+              <li>Einsatz im lokalen Umkreis</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Kontakt</h2>
+            <p>Hier kommen die Standardinformationen für den Betrieb rein. Dieser Bereich ist für dein Angebotspaket sehr wichtig.</p>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <article class="contact-card">
+            <h3>Musterbetrieb Handwerk</h3>
+            <p>Beispielstraße 12<br>50667 Köln</p>
+
+            <div class="contact-list">
+              <a href="tel:+492211234567"><strong>Telefon:</strong> 0221 1234567</a>
+              <a href="mailto:info@musterbetrieb-handwerk.de"><strong>E-Mail:</strong> info@musterbetrieb-handwerk.de</a>
+              <span><strong>Einsatzgebiet:</strong> Köln und Umgebung</span>
+            </div>
+
+            <div class="map-placeholder">
+              <div>
+                <strong>Google Maps Platzhalter</strong>
+                <p style="margin:8px 0 14px;">Hier kannst du später eine Karte einbetten oder einfach einen Link zu Google Maps setzen.</p>
+                <a class="btn btn-secondary" href="#">Route anzeigen</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="form-card" id="termin">
+            <h3>Termin anfragen</h3>
+            <p>Ideal für dein Standard-2-Paket: eine eingebettete Anfrage direkt auf der Website, ganz ohne eigenes Login oder Backend.</p>
+
+            <div class="embed-box">
+              <div>
+                <strong>Platzhalter für dein eingebettetes Formular</strong>
+                <p style="margin:10px 0 0;">
+                  Hier fügst du später den Embed-Code von Tally ein.<br>
+                  Beispiel: Formular für Name, Telefonnummer, E-Mail, Wunschtermin und Anliegen.
+                </p>
+              </div>
+            </div>
+
+            <!--
+              HIER SPÄTER DEINEN TALLY-EMBED-CODE EINFÜGEN.
+              Den Platzhalter oben kannst du dann komplett ersetzen.
+
+              Beispielstruktur:
+              <iframe src="DEIN-TALLY-LINK" width="100%" height="420" frameborder="0"></iframe>
+            -->
+
+            <a href="#" class="btn btn-primary">Termin anfragen</a>
+            <p class="form-hint">Fallback: Den Button kannst du alternativ auf ein externes Formular oder eine externe Buchungsseite verlinken.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Häufige Fragen</h2>
+            <p>Ein FAQ-Bereich wirkt professionell und nimmt Kunden schon vor dem ersten Kontakt Fragen ab.</p>
+          </div>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item active">
+            <button class="faq-question">
+              <span>Wie schnell erhalte ich eine Rückmeldung?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">In der Regel melden wir uns werktags zeitnah auf neue Anfragen, häufig noch am selben oder nächsten Werktag.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Kann ich auch einen Wunschtermin angeben?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">Ja, im Anfrageformular kann direkt ein bevorzugtes Datum oder Zeitfenster angegeben werden.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Arbeiten Sie auch für gewerbliche Kundschaft?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">Ja, wir unterstützen sowohl private Haushalte als auch kleine und mittlere Unternehmen.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Ist ein Vor-Ort-Termin möglich?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">Je nach Anliegen ist eine Besichtigung oder Abstimmung vor Ort selbstverständlich möglich.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="cta-banner">
+          <div>
+            <h3 style="margin:0;">Jetzt unverbindlich anfragen</h3>
+            <p>Einfach Kontakt aufnehmen oder direkt einen Wunschtermin über das Formular senden.</p>
+          </div>
+          <a href="#termin" class="btn btn-secondary">Zur Anfrage</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Musterbetrieb Handwerk</span>
+      <div class="footer-links">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        item.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>
