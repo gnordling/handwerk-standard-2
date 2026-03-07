@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Musterbetrieb Handwerk 1 | Zuverlässig. Lokal. Schnell.</title>
+  <title>Musterbetrieb Handwerk | Zuverlässig, lokal und schnell.</title>
   <style>
     :root {
       --bg: #f6f7f9;
@@ -20,6 +20,7 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -99,18 +100,18 @@
       font-weight: 700;
     }
 
-    .btn-primary:hover,
-    .btn-secondary:hover,
-    button:hover {
-      transform: translateY(-1px);
-    }
-
     .btn-secondary {
       background: white;
       color: var(--text);
       padding: 14px 20px;
       border: 1px solid var(--line);
       font-weight: 700;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    button:hover {
+      transform: translateY(-1px);
     }
 
     .hero {
@@ -192,9 +193,7 @@
       box-shadow: var(--shadow);
     }
 
-    .hero-card {
-      padding: 22px;
-    }
+    .hero-card { padding: 22px; }
 
     .hero-card-top {
       display: flex;
@@ -225,9 +224,7 @@
 
     .mini-box strong { display: block; margin-bottom: 6px; }
 
-    section {
-      padding: 34px 0;
-    }
+    section { padding: 34px 0; }
 
     .section-head {
       display: flex;
@@ -244,7 +241,6 @@
     }
 
     .grid-3,
-    .grid-4,
     .steps,
     .info-grid,
     .contact-grid,
@@ -255,16 +251,16 @@
     }
 
     .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .hours-grid { grid-template-columns: 1fr 1fr; }
-    .contact-grid { grid-template-columns: 0.95fr 1.05fr; align-items: start; }
+    .contact-grid {
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: start;
+    }
     .faq-grid { grid-template-columns: 1fr; }
     .info-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
-    .card {
-      padding: 22px;
-    }
+    .card { padding: 22px; }
 
     .card h3 { font-size: 1.15rem; }
     .card p, .card li, .contact-card p, .form-card p {
@@ -325,9 +321,7 @@
 
     .hours-row:last-child { border-bottom: none; }
 
-    .contact-card, .form-card {
-      padding: 24px;
-    }
+    .contact-card, .form-card { padding: 24px; }
 
     .contact-list {
       display: grid;
@@ -337,30 +331,18 @@
 
     .contact-list a:hover { color: var(--accent); }
 
-    .map-placeholder {
-      min-height: 240px;
+    .map-frame {
+      width: 100%;
+      height: 300px;
+      border: 0;
       border-radius: 16px;
-      border: 1px dashed #cbd5e1;
-      background: linear-gradient(180deg, #f8fafc, #eef2f7);
-      display: grid;
-      place-items: center;
-      text-align: center;
-      color: var(--muted);
-      padding: 20px;
+      display: block;
       margin-top: 18px;
+      overflow: hidden;
     }
 
-    .embed-box {
-      min-height: 360px;
-      border-radius: 16px;
-      border: 1px dashed #cbd5e1;
-      background: #f8fafc;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 26px;
-      color: var(--muted);
-      margin: 18px 0;
+    .tally-wrapper {
+      margin-top: 18px;
     }
 
     .form-hint {
@@ -369,9 +351,7 @@
       margin-top: 12px;
     }
 
-    .faq-item {
-      overflow: hidden;
-    }
+    .faq-item { overflow: hidden; }
 
     .faq-question {
       width: 100%;
@@ -448,7 +428,6 @@
       .contact-grid,
       .hours-grid,
       .grid-3,
-      .grid-4,
       .steps,
       .info-grid {
         grid-template-columns: 1fr 1fr;
@@ -481,7 +460,6 @@
       .contact-grid,
       .hours-grid,
       .grid-3,
-      .grid-4,
       .steps,
       .info-grid,
       .mock-grid {
@@ -548,7 +526,7 @@
           <div class="hero-card-top">
             <div>
               <h3 style="margin-bottom:6px;">Ihr regionaler Ansprechpartner</h3>
-              <p class="rating">Mo–Fr erreichbar · Musterstadt & Umgebung</p>
+              <p class="rating">Mo–Fr erreichbar · Köln & Umgebung</p>
             </div>
             <div class="eyebrow" style="margin:0;">4,9/5 Service</div>
           </div>
@@ -560,15 +538,15 @@
             </div>
             <div class="mini-box">
               <strong>Termine</strong>
-              Anfrage direkt über eingebettetes Formular auf der Website.
+              Anfrage direkt über das eingebettete Formular auf der Website.
             </div>
             <div class="mini-box">
               <strong>Einsatzgebiet</strong>
-             Köln, Umland und ausgewählte Nachbarorte.
+              Köln, Umland und ausgewählte Nachbarorte.
             </div>
             <div class="mini-box">
               <strong>Kontakt</strong>
-              Telefon, E-Mail und kurze Anfragewege ohne Umwege.
+              Telefon, E-Mail und schnelle Anfragewege ohne Umwege.
             </div>
           </div>
         </aside>
@@ -580,7 +558,7 @@
         <div class="section-head">
           <div>
             <h2>Unsere Leistungen</h2>
-            <p>Die Inhalte kannst du später je nach Gewerke anpassen, zum Beispiel für Maler, Sanitär, Elektrik oder allgemeine Handwerksleistungen.</p>
+            <p>Die Inhalte kannst du später je nach Gewerk anpassen, zum Beispiel für Maler, Sanitär, Elektrik oder allgemeine Handwerksleistungen.</p>
           </div>
         </div>
 
@@ -618,7 +596,7 @@
           <article class="card">
             <div class="icon">06</div>
             <h3>Privat & Gewerblich</h3>
-            <p>Leistungen für private Haushalte, Vermieterinnen und Vermieter sowie kleine und mittlere Unternehmen.</p>
+            <p>Leistungen für private Haushalte sowie kleine und mittlere Unternehmen.</p>
           </article>
         </div>
       </div>
@@ -629,7 +607,7 @@
         <div class="section-head">
           <div>
             <h2>Warum Kundinnen und Kunden uns wählen</h2>
-            <p>Dieser Bereich ist wichtig, weil er Vertrauen aufbaut. Gerade kleine Handwerksbetriebe ohne bestehende Website profitieren davon besonders.</p>
+            <p>Dieser Bereich baut Vertrauen auf und ist besonders wichtig für kleine Handwerksbetriebe ohne bestehende Website.</p>
           </div>
         </div>
 
@@ -749,24 +727,35 @@
               <span><strong>Einsatzgebiet:</strong> Köln und Umgebung</span>
             </div>
 
-        <iframe
-  width="100%"
-  height="300"
-  style="border:0; border-radius:16px;"
-  loading="lazy"
-  allowfullscreen
-  referrerpolicy="no-referrer-when-downgrade"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD7JJlHuXwXfaBpBdk3Uo6ACiWCZ-cNAp0&q=Domkloster+4,+50667+Köln">
-</iframe>
+            <iframe
+              class="map-frame"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD7JJlHuXwXfaBpBdk3Uo6ACiWCZ-cNAp0&q=Domkloster+4,+50667+Köln">
+            </iframe>
+          </article>
 
           <article class="form-card" id="termin">
             <h3>Termin anfragen</h3>
+            <p>Ideal für dein Standard-2-Paket: eine eingebettete Anfrage direkt auf der Website, ganz ohne eigenes Login oder Backend.</p>
 
-              <iframe data-tally-src="https://tally.so/embed/xXQM6o?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="1346" frameborder="0" marginheight="0" marginwidth="0" title="Terminanfrage Unternehmen XY"></iframe>
-<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+            <div class="tally-wrapper">
+  <iframe
+    data-tally-src="https://tally.so/embed/xXQM6o?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+    loading="lazy"
+    width="100%"
+    height="1346"
+    frameborder="0"
+    marginheight="0"
+    marginwidth="0"
+    title="Terminanfrage Unternehmen XY">
+  </iframe>
+</div>
 
-            <a href="#" class="btn btn-primary">Termin anfragen</a>
-            <p class="form-hint">Fallback: Den Button kannst du alternativ auf ein externes Formular oder eine externe Buchungsseite verlinken.</p>
+            <p class="form-hint">
+              Die Einsendungen leitest du nicht über den HTML-Code an Airtable weiter, sondern direkt in Tally über Integrations → Airtable.
+            </p>
           </article>
         </div>
       </div>
@@ -841,23 +830,41 @@
   </footer>
 
   <script>
-    const mobileToggle = document.getElementById('mobileToggle');
-    const navLinks = document.getElementById('navLinks');
+    const mobileToggle = document.getElementById("mobileToggle");
+    const navLinks = document.getElementById("navLinks");
 
-    mobileToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
+    mobileToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
     });
 
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => navLinks.classList.remove("open"));
     });
 
-    document.querySelectorAll('.faq-question').forEach(button => {
-      button.addEventListener('click', () => {
+    document.querySelectorAll(".faq-question").forEach(button => {
+      button.addEventListener("click", () => {
         const item = button.parentElement;
-        item.classList.toggle('active');
+        item.classList.toggle("active");
       });
     });
+
+    const d = document, w = "https://tally.so/widgets/embed.js", v = () => {
+      if (typeof Tally !== "undefined") {
+        Tally.loadEmbeds();
+      } else {
+        d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(e => e.src = e.dataset.tallySrc);
+      }
+    };
+
+    if (typeof Tally !== "undefined") {
+      v();
+    } else if (d.querySelector(`script[src="${w}"]`) == null) {
+      const s = d.createElement("script");
+      s.src = w;
+      s.onload = v;
+      s.onerror = v;
+      d.body.appendChild(s);
+    }
   </script>
 </body>
 </html>
